@@ -51,9 +51,6 @@ func (f *BloomFilter) Bits() []byte { return f.bits }
 
 // Add inserts data into the filter.
 func (f *BloomFilter) Add(data []byte) {
-	if data == nil {
-		return
-	}
 	for i := uint(0); i < f.k; i++ {
 		f.set(hash.Hash(data, i, f.m))
 	}
